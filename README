@@ -71,13 +71,14 @@ RTP
 ICE-TCP RFC
   https://tools.ietf.org/html/rfc6544
 Trickle ICE
-   https://tools.ietf.org/html/draft-ietf-ice-trickle-21
+  https://tools.ietf.org/html/draft-ietf-ice-trickle-21
 XMPP Jingle ICE transport
   https://www.xmpp.org/extensions/xep-0176.html
 
-In future, nice may additionally support the following standards.
+In the future, nice may additionally support the following standards.
 
-NAT-PMP
-  http://files.dns-sd.org/draft-cheshire-nat-pmp.txt
-
+Port Control Protocol (PCP)
+  https://tools.ietf.org/html/rfc6887
+NAT Port Mapping Protocol (NAT-PMP), obsolete precessor to PCP
+  https://tools.ietf.org/html/rfc6886 (old)
 
