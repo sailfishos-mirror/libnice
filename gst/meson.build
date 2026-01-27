@@ -15,7 +15,9 @@ libgstnice = library('gstnice',
   dependencies: [libnice_dep, gst_dep],
   install_dir: gst_plugins_install_dir,
   install: true)
-plugins = [libgstnice]
+gst_plugins = [
+  declare_dependency(link_with: libgstnice, variables: {'full_path': libgstnice.full_path()})
+]
 
 # Generate pc files for static plugins if we build static plugins
 if get_option('default_library') != 'shared'
