@@ -56,8 +56,9 @@
 typedef struct {
   NiceTurnSocketCompatibility compatibility;
   union {
-    guint8 u8[65536];
-    guint16 u16[32768];
+    /* max valid STUN msg size (20 B header + largest multiple of 4 ≤ 65535) */
+    guint8 u8[65552]; 
+    guint16 u16[32776];
   } recv_buf;
   gsize recv_buf_len;  /* in bytes */
   guint expecting_len;
@@ -176,6 +177,11 @@ socket_recv_message (NiceSocket *sock, NiceInputMessage *recv_message)
 
       if (magic < 0x4000) {
         /* Its STUN */
+        if ((packetlen % 4) != 0) {
+          nice_debug ("%u is an invalid STUN message length; should be padded to a multiple of 4", packetlen);
+          return -1;
+        }
+
         priv->expecting_len = 20 + packetlen;
       } else {
         /* Channel data */
