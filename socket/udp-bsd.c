@@ -161,6 +161,8 @@ nice_udp_bsd_socket_new (GMainContext *ctx, NiceAddress *addr, gboolean recv_tos
 
   if (recv_tos) {
 #if GLIB_CHECK_VERSION (2, 88, 0)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     gint level;
     gint optname = 0;
     GError *gerr = NULL;
@@ -188,6 +190,7 @@ nice_udp_bsd_socket_new (GMainContext *ctx, NiceAddress *addr, gboolean recv_tos
       nice_debug ("Couldn't enable receiving of ToS: %s", gerr->message);
       g_clear_error (error);
     }
+#pragma GCC diagnostic pop
 #else
     g_assert_not_reached();
 #endif

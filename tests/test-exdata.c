@@ -52,8 +52,11 @@ static void cb_nice_recv (NiceAgent *agent, guint stream_id, guint component_id,
   msg = G_IP_TOS_MESSAGE (nice_message_extra_data_get_tos (exdata));
   g_assert_nonnull (msg);
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
   g_assert_cmpint (g_ip_tos_message_get_dscp (msg), ==, DSCP_VAL);
   g_assert_cmpint (g_ip_tos_message_get_ecn (msg), ==, ECN_VAL);
+#pragma GCC diagnostic pop
 
   g_clear_object (&msg);
 
