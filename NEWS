@@ -1,3 +1,17 @@
+libnice 0.1.24 (2026-09-01)
+===========================
+API: nice_agent_attach_recv_ex() to retrieve extra message data in recv callback
+API: nice_message_extra_data_get_tos() to enable access to IP_TOS/IPV6_TCLASS
+  IP header field of incoming packets; requires GLib 2.88
+API: stun_usage_bind_run_compat() to allow specifying compatibility mode when
+  sending a binding request
+Nicesrc: Attach GstNetControlMessageMeta containing the TOS header field to buffers
+Ensure NICE_CANDIDATE_MAX_TURN_SERVERS is obeyed
+Ensure nice_agent_get_local_credentials() returns FALSE on error
+Fix random crashes
+Fix potential heap buffer overflow in UDP-TURN over TCP
+Fix compilation on FreeBSD
+
 libnice 0.1.23 (2025-11-26)
 ===========================
 API: Added option NICE_AGENT_OPTION_CLOSE_FORCED to not wait for TURN when
