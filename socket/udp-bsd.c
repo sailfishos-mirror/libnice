@@ -333,7 +333,7 @@ socket_recv_messages (NiceSocket *sock,
 
 #if GLIB_CHECK_VERSION (2, 88, 0)
     {
-      guint j;
+      gint j;
 
       for (j = 0; j != num_ctlmsgs; ++j) {
         GSocketControlMessage *msg = ctlmsgs[j];
